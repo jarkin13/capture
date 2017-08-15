@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>Capture | Photo Collection</title>
+    <meta name="description" content="Manage your photo collections and photos here" />
+    <script src="//use.typekit.net/lmk0uqq.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+    <link rel="icon" href="https://www.capture.com/favicon.ico">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel=stylesheet href="assets/css/libs/toastr/toastr.css">
+    <link rel=stylesheet href="assets/css/main.css">
+  </head>
+  <body>
+    <header class="main-head">
+      <div class="container">
+        <h1 class="capture-logo">Capture</h1>
+      </div>
+    </header>
+    <div class="container all">
+      <div class="row">
+        <div class="col-sidebar col-md-12">
+          <h1 class="title">Photo Manager</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sidebar col-md-2">
+          <ul class="sidebar-list">
+            <li class="show-all link"><i class="fa fa-home icon"></i> All</li>
+            <li class="sidebar-subtitle">
+              COLLECTIONS <button id="add-new" class="plus" data-toggle="modal" data-target="#add-new-modal">+</button>
+              <ul class="photo-collections">
+              </ul>
+              <button id="add-new" class="add-button" data-toggle="modal" data-target="#add-new-modal">Add New Collection</button>
+            </li>
+          </ul>
+        </div>
+        <div class="col-photos col-md-10">
+          <div class="row photo-collection">
+            <div class="col-sidebar col-xs-12 col-md-12">
+              <h2 class="collection-title"></h2>
+              <button id="remove-collection" class="btn btn-default" data-toggle="modal" data-target="#remove-collection-alert">Remove Collection</button>
+            </div>
+            <div class="col-sidebar col-xs-12 col-md-12">
+              <h3 class="total"><span class="num"></span> Total Photos</h3>
+            </div>
+          </div>
+          <div class="row row-photos">
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="1">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/beach-pool.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="2">
+              <div class="row">
+                <div class="col-image col-md-12">        
+                                        
+                  <img src="assets/images/default/cactus-flower.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="3">
+              <div class="row">
+                <div class="col-image col-md-12">     
+                                               
+                  <img src="assets/images/default/desert.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="4">
+              <div class="row">
+                <div class="col-image col-md-12">            
+                                        
+                  <img src="assets/images/default/fire-in-the-sky.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="5">
+              <div class="row">
+                <div class="col-image col-md-12">                               
+                  <img src="assets/images/default/flower.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="6">
+              <div class="row">
+                <div class="col-image col-md-12">                               
+                  <img src="assets/images/default/kissing-birds.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="7">
+              <div class="row">
+                <div class="col-image col-md-12">                               
+                  <img src="assets/images/default/landscape.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="8">
+              <div class="row">
+                <div class="col-image col-md-12">                               
+                  <img src="assets/images/default/lightning.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="9">
+              <div class="row">
+                <div class="col-image col-md-12">                               
+                  <img src="assets/images/default/lights.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="10">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/penguins.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="11">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/pieris.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="12">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/pink-flamingos.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="13">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/singing-birds.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="14">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/skate-park.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="15">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/sunset.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="16">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/sunrise.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="17">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/sunset.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="18">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/teacup-pig.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="19">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/wave.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-photo col-xs-6 col-sm-3 col-md-3" data-photoid="20">
+              <div class="row">
+                <div class="col-image col-md-12">
+                  <img src="assets/images/default/buddha-statue.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="add-photo" class="dropdown">
+                    <button class="btn btn-primary" data-toggle="dropdown">Add to Collection</button>
+                    <button class="btn btn-primary photo-collection remove-photo" data-toggle="modal" data-target="#remove-photo-alert"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-container">
+              <ul id="collections" class="dropdown-menu" role="menu">
+                <li class="add-new-input">
+                  <input id="new-collection" type="text" placeholder="New Collection"> 
+                  <button id="add-instant" class="plus hidden"><span>+</span></button>
+                </li>
+                <li class="divider"></li>
+                <li class="add-new-btn">
+                  <input value="" id="add-photoid" type="hidden">
+                  <button id="add-new" class="add-new-collection" role="menuitem" tabindex="-1" data-toggle="modal" data-target="#add-new-modal"><i class="fa fa-trash-o"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="add-new-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="modalLabel">New Photo Collection</h4>
+            </div>
+            <div class="modal-body">
+              <p class="error-msg hidden"></p>
+              <form>
+                <input value="" id="add-photoid" type="hidden">
+                <div class="form-group">
+                  <label for="new-collection" class="control-label">Please enter a new collection name:</label>
+                  <input type="text" class="form-control" id="new-collection">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button id="create" type="button" class="btn btn-primary">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="remove-collection-alert" class="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 id="oh-snap!-you-got-an-error!">You're about to remove a collection!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a></h4>
+            <p>Are you sure you would like to do this?</p>
+            <p>
+              <button id="remove-confirm" type="button" class="btn btn-danger">Remove</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="remove-photo-alert" class="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <input type="hidden" value="" id="photoid">
+            <h4 id="oh-snap!-you-got-an-error!">You're about to remove this photo from this collection!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a></h4>
+            <p>Are you sure you would like to do this?</p>
+            <p>
+              <button id="remove-photo-confirm" type="button" class="btn btn-danger">Remove</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="assets/js/libs/toastr/toastr.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
